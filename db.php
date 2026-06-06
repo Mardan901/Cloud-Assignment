@@ -9,10 +9,13 @@ if (!$conn) {
 $host = 'steel-db-steel-db.g.aivencloud.com'; 
 $user = 'avnadmin';
 $pass = 'AVNS_FuuyThp7HaLjxiETeCv';
-$dbname = 'defaultdb';
+
+// UPDATED: Changed from 'defaultdb' to your actual active database name
+$dbname = 'a264133_cbpm1ogd'; 
+
 $port = 18828;
 
-
+// This forces PHP to use a secure SSL handshake required by Aiven
 mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
 
 // Connect using the configured parameters
