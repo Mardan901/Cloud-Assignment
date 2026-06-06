@@ -1,5 +1,5 @@
 <?php
-// Initialize a secure SQL connection object
+// 1. Initialize a secure SQL connection object
 $conn = mysqli_init();
 
 if (!$conn) {
@@ -9,17 +9,21 @@ if (!$conn) {
 $host = 'steel-db-steel-db.g.aivencloud.com'; 
 $user = 'avnadmin';
 $pass = 'AVNS_FuuyThp7HaLjxiETeCv';
-
-// UPDATED: Changed from 'defaultdb' to your actual active database name
-$dbname = 'a264133_b7d5eblm';
-
 $port = 18828;
 
-// This forces PHP to use a secure SSL handshake required by Aiven
+// Force connection to the default cloud workspace
+$connect_db = 'defaultdb'; 
+
+// Force PHP to use the secure SSL handshake required by Aiven
 mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
 
-// Connect using the configured parameters
-if (!mysqli_real_connect($conn, $host, $user, $pass, $dbname, $port, NULL, MYSQLI_CLIENT_SSL)) {
+// 2. Establish the base handshake using 'defaultdb'
+if (!mysqli_real_connect($conn, $host, $user, $pass, $connect_db, $port, NULL, MYSQLI_CLIENT_SSL)) {
     die("Connection failed: " . mysqli_connect_error());
+}
+
+// 3. Now that we are inside, safely switch over to your uploaded database layout
+if (!mysqli_select_db($conn, 'a264133_b7d5eblm')) {
+    die("Database selection failed: " . mysqli_error($conn));
 }
 ?>
