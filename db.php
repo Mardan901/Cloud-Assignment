@@ -11,7 +11,7 @@ $user = 'avnadmin';
 $pass = 'AVNS_FuuyThp7HaLjxiETeCv';
 
 // UPDATED: Changed from 'defaultdb' to your actual active database name
-$dbname = 'a264133_cbpm1ogd'; 
+$dbname = 'a264133_b7d5eblm';
 
 $port = 18828;
 
