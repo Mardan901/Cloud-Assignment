@@ -46,7 +46,7 @@
     </div>
 
     <footer>
-        &copy; <?php echo date("Y"); ?> JNG Resources Sdn Bhd All rights reserved. | SWC2703 Project
+        &copy; <?php echo date("Y"); ?> JNG Resources Sdn Bhd All rights reserved. | ARC2263 Project
     </footer>
 
 </body>
