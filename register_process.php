@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role'];
 
     $check_query = "SELECT * FROM users WHERE username='$username'";
+
     $check_result = mysqli_query($conn, $check_query);
 
     // check if theres same username
@@ -15,15 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<a href='register.html'>Click here to try a different one.</a>";
     } else {
         
-        //UPDATED SECURITY CHECK (HASHED)
         if ($role === 'admin') {
             $admin_code = $_POST['admin_verification_code'];
-            
-        
-            $stored_hash = '$2y$10$wU0R.Tz6W8Qnbe2fU7/FReK36vC5lU1aDkaL7rC2b0GqN/p7K6vS';
-            
-            if (!password_verify($admin_code, $stored_hash)) {
-                die("<h3 style='color:red;'>Error: Unauthorized admin registration token. Access Denied.</h3> <br><br> <a href='register.html'>Go back</a>");
+            if ($admin_code !== 'STEEL_ADMIN_2026') {
+                die("<h3 style='color:red;'>Error: Unauthorized admin registration attempt. Invalid secret code.</h3> <br><br> <a href='register.html'>Go back</a>");
             }
         }
         // --- END SECURITY CHECK ---
@@ -42,4 +38,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 mysqli_close($conn);
-?>
