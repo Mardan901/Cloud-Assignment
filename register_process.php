@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $admin_code = $_POST['admin_verification_code'];
             
         
-            $stored_hash = '$2y$10$wU0R.Tz6W8Qnbe2fU7/FReK36vC5lU1aDkaL7rC2b0GqN/p7K6vS.';
+            $stored_hash = '$2y$10$wU0R.Tz6W8Qnbe2fU7/FReK36vC5lU1aDkaL7rC2b0GqN/p7K6vS';
             
             if (!password_verify($admin_code, $stored_hash)) {
                 die("<h3 style='color:red;'>Error: Unauthorized admin registration token. Access Denied.</h3> <br><br> <a href='register.html'>Go back</a>");
