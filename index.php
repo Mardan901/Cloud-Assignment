@@ -11,7 +11,7 @@
     <! custom styling for only index>
         <style>
             .hero {
-                padding: 100px 50px;
+                padding: 50px 5px;
                 text-align: left-align;
                 background-color: white;
                 border-bottom: 5px solid var(--main-blue);
